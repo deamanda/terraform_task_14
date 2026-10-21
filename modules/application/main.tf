@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size            = 2
   min_size            = 2
   desired_capacity    = 2
-  vpc_zone_identifier = [var.subnet1_id]
+  vpc_zone_identifier = [var.subnet1_id, var.subnet2_id, var.subnet3_id]
   target_group_arns = [
     aws_lb_target_group.target_group.arn
   ]
@@ -58,9 +58,4 @@ resource "aws_lb_target_group" "target_group" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = var.vpc_id
-}
-
-resource "aws_autoscaling_attachment" "example" {
-  autoscaling_group_name = aws_autoscaling_group.asg.id
-  lb_target_group_arn    = aws_lb_target_group.target_group.arn
 }
