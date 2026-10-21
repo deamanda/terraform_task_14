@@ -27,7 +27,7 @@ variable "template" {
 variable "asg" {
   type        = string
   description = "autoscaling group name"
-  default     = "cmtr-otuokx4e-blue-asg"
+  default     = "cmtr-otuokx4e-asg"
 }
 
 variable "loadbalancer" {
@@ -39,23 +39,23 @@ variable "loadbalancer" {
 variable "tg" {
   type        = string
   description = "target group"
-  default     = "cmtr-otuokx4e-green-tg"
+  default     = "cmtr-otuokx4e-tg"
 }
 
 variable "subnet1_id" {
   type        = string
   description = "subnet1 id"
-  default     = "cmtr-otuokx4e-green-tg"
+  default     = ""
 }
 
 variable "subnet2_id" {
   type        = string
   description = "subnet2 id"
-  default     = "cmtr-otuokx4e-green-tg"
+  default     = ""
 }
 
 variable "subnet3_id" {
   type        = string
   description = "subnet3 id"
-  default     = "cmtr-otuokx4e-green-tg"
+  default     = ""
 }

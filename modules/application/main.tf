@@ -10,10 +10,6 @@ resource "aws_launch_template" "alt" {
     ]
   }
 
-  placement {
-    availability_zone = "eu-west-1"
-  }
-
   user_data = filebase64("${path.module}/script.sh")
 
 }
@@ -44,7 +40,7 @@ resource "aws_lb" "load_balancer" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.sg_public_http_id]
-  subnets            = [var.subnet2_id]
+  subnets            = [var.subnet1_id, var.subnet2_id, var.subnet3_id]
 }
 
 resource "aws_lb_listener" "listener" {

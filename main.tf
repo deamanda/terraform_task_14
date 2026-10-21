@@ -9,6 +9,7 @@ module "network" {
 module "network_security" {
   source = "./modules/network_security"
   vpc_id = module.network.vpc_id
+  allowed_ip_range = ["18.153.146.156/32", "203.0.113.25/32"]
 }
 
 module "application" {

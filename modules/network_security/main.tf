@@ -8,16 +8,6 @@ resource "aws_security_group" "ssh_security_group" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_range
   }
-
-  ingress {
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = var.allowed_ip_range
-  }
-  tags = {
-    Project = "cmtr-otuokx4e"
-  }
 }
 
 
@@ -31,16 +21,6 @@ resource "aws_security_group" "public_http_security_group" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_range
   }
-
-  ingress {
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = var.allowed_ip_range
-  }
-  tags = {
-    Project = "cmtr-otuokx4e"
-  }
 }
 
 resource "aws_security_group" "private_http_security_group" {
@@ -48,17 +28,8 @@ resource "aws_security_group" "private_http_security_group" {
   vpc_id = var.vpc_id
   ingress {
     security_groups = [aws_security_group.public_http_security_group.id]
-    from_port       = 8080
+    from_port       = 80
     protocol        = "tcp"
-    to_port         = 8080
-  }
-  ingress {
-    security_groups = [aws_security_group.public_http_security_group.id]
-    protocol        = "icmp"
-    from_port       = -1
-    to_port         = -1
-  }
-  tags = {
-    Project = "cmtr-otuokx4e"
+    to_port         = 80
   }
 }
