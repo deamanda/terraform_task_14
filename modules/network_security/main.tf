@@ -21,12 +21,6 @@ resource "aws_security_group" "public_http_security_group" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_range
   }
-  egress {
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    security_groups = [var.sg_private_http_id]
-  }
 }
 
 resource "aws_security_group" "private_http_security_group" {
