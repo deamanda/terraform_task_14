@@ -22,7 +22,7 @@ resource "aws_subnet" "subnet2" {
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = true
   tags = {
-    Name = var.subnet1
+    Name = var.subnet2
   }
 }
 
